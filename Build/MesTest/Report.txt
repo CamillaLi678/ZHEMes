@@ -1,0 +1,437 @@
+{
+   "BasicInformation" : {
+      "Adapter" : "BGA153(11.5x13)-AG01",
+      "Author" : "DESKTOP-4H75N9L",
+      "BuildOn" : "AP8000",
+      "BuildTime" : "20200605:1603",
+      "BuildVersion" : "1.04.42t7(20200114)",
+      "CheckSum" : "0x9CE68B68",
+      "CheckSumType" : "Byte",
+      "ChipName" : "KLMAG2GEAC-B001",
+      "CommandSequence" : "Erase if blank check failed --> Program --> Verify",
+      "CurrentTime" : "",
+      "Description" : "",
+      "ExecPC" : "DESKTOP-4H75N9L",
+      "FuncMode" : "Program",
+      "Package" : "BGA153(11.5x13)",
+      "ProjectName" : "D:\\Acroview\\ACStdMes\\ProjSave\\Dest.apr",
+      "TimeWhenLoad" : "2020/06/05 19:46:24"
+   },
+   "Fail" : 0,
+   "FileImport" : {
+      "ClearBufferWithData" : "0xFF",
+      "Version" : "2.0"
+   },
+   "IseMMC" : 0,
+   "Lot" : 9,
+   "OverallStatistics" : {
+      "Fail" : 0,
+      "Pass" : 9,
+      "SiteStatistics" : [
+         {
+            "BottomBoard" : "None",
+            "Fail" : 0,
+            "Pass" : 0,
+            "SKTStatistics" : [
+               {
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 1
+               },
+               {
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 2
+               },
+               {
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 3
+               },
+               {
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 4
+               },
+               {
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 5
+               },
+               {
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 6
+               },
+               {
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 7
+               },
+               {
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 8
+               }
+            ],
+            "SiteAlias" : "Site05",
+            "SiteSN" : "A80U19090101864",
+            "Total" : 0,
+            "YieldRate" : "0.000%"
+         },
+         {
+            "BottomBoard" : "19000000DEB0C548",
+            "Fail" : 0,
+            "Pass" : 8,
+            "SKTStatistics" : [
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "F6000000DE9F6A48",
+                        "Fail" : 0,
+                        "Pass" : 1
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 1,
+                  "SKTIdx" : 1
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "E8000001513F3F48",
+                        "Fail" : 0,
+                        "Pass" : 1
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 1,
+                  "SKTIdx" : 2
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "46000000DEB3D848",
+                        "Fail" : 0,
+                        "Pass" : 1
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 1,
+                  "SKTIdx" : 3
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "F3000000DEDDED48",
+                        "Fail" : 0,
+                        "Pass" : 1
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 1,
+                  "SKTIdx" : 4
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "85000000DE909848",
+                        "Fail" : 0,
+                        "Pass" : 1
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 1,
+                  "SKTIdx" : 5
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "03000000DE974648",
+                        "Fail" : 0,
+                        "Pass" : 1
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 1,
+                  "SKTIdx" : 6
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "B5000000DE913048",
+                        "Fail" : 0,
+                        "Pass" : 1
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 1,
+                  "SKTIdx" : 7
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "26000000DECDA948",
+                        "Fail" : 0,
+                        "Pass" : 1
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 1,
+                  "SKTIdx" : 8
+               }
+            ],
+            "SiteAlias" : "Site01",
+            "SiteSN" : "A80U19090101901",
+            "Total" : 8,
+            "YieldRate" : "100.000%"
+         },
+         {
+            "BottomBoard" : "26000000DED09548",
+            "Fail" : 0,
+            "Pass" : 1,
+            "SKTStatistics" : [
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "14000000DEC7F148",
+                        "Fail" : 0,
+                        "Pass" : 0
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 1
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "9B0000015115BB48",
+                        "Fail" : 0,
+                        "Pass" : 0
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 2
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "A5000000DEDF2048",
+                        "Fail" : 0,
+                        "Pass" : 0
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 3
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "6E000000DEBE0848",
+                        "Fail" : 0,
+                        "Pass" : 0
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 4
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "48000000DEC64848",
+                        "Fail" : 0,
+                        "Pass" : 1
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 1,
+                  "SKTIdx" : 5
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "97000000DEA6C748",
+                        "Fail" : 0,
+                        "Pass" : 0
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 6
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "C6000000DEC2F148",
+                        "Fail" : 0,
+                        "Pass" : 0
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 7
+               },
+               {
+                  "AdpInfo" : [
+                     {
+                        "AdpSN" : "A2000000DE965748",
+                        "Fail" : 0,
+                        "Pass" : 0
+                     }
+                  ],
+                  "Fail" : 0,
+                  "Pass" : 0,
+                  "SKTIdx" : 8
+               }
+            ],
+            "SiteAlias" : "Site02",
+            "SiteSN" : "A80U19090102024",
+            "Total" : 1,
+            "YieldRate" : "100.000%"
+         }
+      ],
+      "Total" : 9,
+      "YieldRate" : "100.000%"
+   },
+   "Pass" : 9,
+   "ReportTime" : "2020/06/05 19:51:06",
+   "SktCounter" : [
+      {
+         "BottomBoard" : "FFFFFFFFFFFFFFFF",
+         "SiteAlias" : "Site05",
+         "SiteSN" : "A80U19090101864"
+      },
+      {
+         "AdpCounter" : [
+            {
+               "AdpSN" : "F6000000DE9F6A48",
+               "Current" : 7,
+               "FailCnt" : 6,
+               "Limited" : 60100,
+               "SKTIdx" : 1
+            },
+            {
+               "AdpSN" : "E8000001513F3F48",
+               "Current" : 6,
+               "FailCnt" : 5,
+               "Limited" : 60100,
+               "SKTIdx" : 2
+            },
+            {
+               "AdpSN" : "46000000DEB3D848",
+               "Current" : 2,
+               "FailCnt" : 2,
+               "Limited" : 60100,
+               "SKTIdx" : 3
+            },
+            {
+               "AdpSN" : "F3000000DEDDED48",
+               "Current" : 5,
+               "FailCnt" : 4,
+               "Limited" : 60100,
+               "SKTIdx" : 4
+            },
+            {
+               "AdpSN" : "85000000DE909848",
+               "Current" : 6,
+               "FailCnt" : 4,
+               "Limited" : 60100,
+               "SKTIdx" : 5
+            },
+            {
+               "AdpSN" : "03000000DE974648",
+               "Current" : 7,
+               "FailCnt" : 5,
+               "Limited" : 60100,
+               "SKTIdx" : 6
+            },
+            {
+               "AdpSN" : "B5000000DE913048",
+               "Current" : 7,
+               "FailCnt" : 4,
+               "Limited" : 60100,
+               "SKTIdx" : 7
+            },
+            {
+               "AdpSN" : "26000000DECDA948",
+               "Current" : 7,
+               "FailCnt" : 5,
+               "Limited" : 60100,
+               "SKTIdx" : 8
+            }
+         ],
+         "BottomBoard" : "19000000DEB0C548",
+         "SiteAlias" : "Site01",
+         "SiteSN" : "A80U19090101901"
+      },
+      {
+         "AdpCounter" : [
+            {
+               "AdpSN" : "14000000DEC7F148",
+               "Current" : 4,
+               "FailCnt" : 1,
+               "Limited" : 60100,
+               "SKTIdx" : 1
+            },
+            {
+               "AdpSN" : "9B0000015115BB48",
+               "Current" : 3,
+               "FailCnt" : 1,
+               "Limited" : 60100,
+               "SKTIdx" : 2
+            },
+            {
+               "AdpSN" : "A5000000DEDF2048",
+               "Current" : 3,
+               "FailCnt" : 2,
+               "Limited" : 60100,
+               "SKTIdx" : 3
+            },
+            {
+               "AdpSN" : "6E000000DEBE0848",
+               "Current" : 3,
+               "FailCnt" : 2,
+               "Limited" : 60100,
+               "SKTIdx" : 4
+            },
+            {
+               "AdpSN" : "48000000DEC64848",
+               "Current" : 3,
+               "FailCnt" : 2,
+               "Limited" : 60100,
+               "SKTIdx" : 5
+            },
+            {
+               "AdpSN" : "97000000DEA6C748",
+               "Current" : 3,
+               "FailCnt" : 1,
+               "Limited" : 60100,
+               "SKTIdx" : 6
+            },
+            {
+               "AdpSN" : "C6000000DEC2F148",
+               "Current" : 0,
+               "FailCnt" : 0,
+               "Limited" : 60100,
+               "SKTIdx" : 7
+            },
+            {
+               "AdpSN" : "A2000000DE965748",
+               "Current" : 3,
+               "FailCnt" : 2,
+               "Limited" : 60100,
+               "SKTIdx" : 8
+            }
+         ],
+         "BottomBoard" : "26000000DED09548",
+         "SiteAlias" : "Site02",
+         "SiteSN" : "A80U19090102024"
+      }
+   ],
+   "WorkOrder" : "TEST-002-S-TOP",
+   "eMMCMID" : ""
+}

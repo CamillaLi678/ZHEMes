@@ -1,0 +1,37 @@
+[{
+		"ModuleName":	"LC610N",
+		"Baudrate":	"9600",
+		"Program_PIDVID":	"VID_0525&PID_A4A7",
+		"Verify_PIDVID":	"",
+		"CmdLine":	"ExePath -pac FWPath -port ComPort > LogPath\r\n",
+		"ExePath":	"D:\\ACComMes_v3\\Build\\OrgSoftWare\\bin0\\CmdDloader.exe",
+		"LogPath":	"D:\\ACComMes_v3\\Build\\Log\\OrgLog",
+		"ProgramMode":	"多进程烧录",
+		"ComMap":	"<Aprog11-A80U20093003837,11,15><Aprog11-A80U20093003837,12,-1><Aprog11-A80U20093003837,13,-1><Aprog11-A80U20093003837,14,-1><Aprog18-A80U20093003638,21,16><Aprog18-A80U20093003638,22,-1><Aprog18-A80U20093003638,23,-1><Aprog18-A80U20093003638,24,-1><站点03,31,-1><站点03,32,-1><站点03,33,-1><站点03,34,-1><站点04,41,-1><站点04,42,-1><站点04,43,-1><站点04,44,-1>",
+		"TimeOut":	10,
+		"SuccessFlag":	"DownLoad Passed"
+	}, {
+		"ModuleName":	"AG35",
+		"Baudrate":	"115200",
+		"Program_PIDVID":	"VID_05C6&PID_9008",
+		"Verify_PIDVID":	"",
+		"CmdLine":	"cd /d ExePath ComPort Baudrate FWPath > LogPath",
+		"ExePath":	"D:\\QMulti_DL_CMD_V2.2 && QMulti_DL_CMD_V2.2.exe",
+		"LogPath":	"D:\\ACComMes_v3\\Build\\Log\\OrgLog",
+		"ProgramMode":	"多进程烧录",
+		"ComMap":	"<Aprog11-A80U20093003837,11,17><Aprog11-A80U20093003837,12,-1><Aprog11-A80U20093003837,13,-1><Aprog11-A80U20093003837,14,-1><站点02,21,-1><站点02,22,-1><站点02,23,-1><站点02,24,-1><站点03,31,-1><站点03,32,-1><站点03,33,-1><站点03,34,-1><站点04,41,-1><站点04,42,-1><站点04,43,-1><站点04,44,-1>",
+		"TimeOut":	1000,
+		"SuccessFlag":	"FW upgrade success"
+	}, {
+		"ModuleName":	"AG35CET",
+		"Baudrate":	"115200",
+		"Program_PIDVID":	"VID_2ECC&PID_3002",
+		"Verify_PIDVID":	"",
+		"CmdLine":	"cd /d ExePath ComPort Baudrate FWPath && ComPort > LogPath",
+		"ExePath":	"D:\\ACCode\\MultiAprog\\trunk\\SunGrowMes\\SunGrowMesV2\\SunGrowMes\\Build\\OrgSoftWare\\bin0\\CmdDloader.exe",
+		"LogPath":	"D:\\ACCode\\MultiAprog\\trunk\\SunGrowMes\\SunGrowMesV2\\SunGrowMes\\Build\\OrgLog",
+		"ProgramMode":	"多进程烧录",
+		"ComMap":	"<11,-1><12,Com2><13,-1><14,Com4><21,-1><22,-1>",
+		"TimeOut":	1000,
+		"SuccessFlag":	"DownLoad Passed"
+	}]

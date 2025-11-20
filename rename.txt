@@ -1,0 +1,18 @@
+如果有客户，名称为ABC，修改本工程ACComMes，变成ABCMes工程的步骤：
+
+1. ACComMes文件夹修改成ABCMes
+2. ACComMes.sln修改成ABCMes.sln，ComMes文件夹修改成ABCMes
+3. ACComMes.vcxproj改名成ABCMes.vcxproj
+4. ACComMes.sln里面内容ACComMes修改成ABCMes
+5. ACComMes.vcxproj里面内容修改ACCom修改成ABC
+6. 修改ToolRelease.bat，ACComMes修改成ABCMes
+7. 打开工程，删除ACComMes.vcxproj，添加解决方案ABCMes.vcxproj
+8. 修改Mes.cpp，77行，"ACComMesInstance"修改成"ABCMesInstance"
+9. 打开资源视图，修改Mes.rc，VS_VERSION_INFO，把里面的ACComMes换成ABCMes;
+10. Setting.json里的Manufactor修改为ABC
+11. 删除rename.txt
+
+Build目录下，请带上VC2015_vcredist_x86.exe
+
+测试web接口，在Test目录运行vmes.exe，修改Setting.json里配置LocalServer=1开始本地调试
+注意根据实际需求，修改config.yaml，order.json，success.json

@@ -1,0 +1,30 @@
+{
+	"SiteInfo":[
+	{
+		"SiteSN":"A00001","Type":"PT100","SlotNum":8,
+		"SlotInfo":[
+		{"index":0,"SN":"4000000000123456","limited":30000,"current":9000,"failcnt":10},
+		{"index":1,"SN":"4000000000123457","limited":30000,"current":9000,"failcnt":10},
+		{"index":2,"SN":"4000000000123458","limited":30000,"current":9000,"failcnt":10},
+		{"index":3,"SN":"4000000000123459","limited":30000,"current":9000,"failcnt":10},
+		{"index":4,"SN":"4000000000123450","limited":30000,"current":9000,"failcnt":10},
+		{"index":5,"SN":"4000000000123451","limited":30000,"current":9000,"failcnt":10},
+		{"index":6,"SN":"4000000000123452","limited":30000,"current":9000,"failcnt":10},
+		{"index":7,"SN":"4000000000123453","limited":30000,"current":9000,"failcnt":10}
+		]
+	},
+	{
+		"SiteSN":"A00002","Type":"PT100","SlotNum":8,
+		"SlotInfo":[
+		{"index":0,"SN":"4000000000223456","limited":30000,"current":8000,"failcnt":10},
+		{"index":1,"SN":"4000000000223457","limited":30000,"current":8000,"failcnt":10},
+		{"index":2,"SN":"4000000000223458","limited":30000,"current":8000,"failcnt":10},
+		{"index":3,"SN":"4000000000223459","limited":30000,"current":8000,"failcnt":10},
+		{"index":4,"SN":"4000000000223450","limited":30000,"current":8000,"failcnt":10},
+		{"index":5,"SN":"4000000000223451","limited":30000,"current":8000,"failcnt":10},
+		{"index":6,"SN":"4000000000223452","limited":30000,"current":8000,"failcnt":10},
+		{"index":7,"SN":"4000000000223453","limited":30000,"current":8000,"failcnt":10}
+		]
+	}
+	]
+}

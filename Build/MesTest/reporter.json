@@ -1,0 +1,76 @@
+{
+	"WorkOrder":"2020042200001",
+	"LotNumber":1000,
+	"Checksum":"12345678",
+	"Pass":999,
+	"Fail":1,
+	"IseMMC":0,
+	"eMMCMID":"E00001",
+	"ReportTime":"2020/04/24 20:25:21",
+	"BasicInformation":
+	{
+		"ProjectName":"D:\\客户问题与调试\\Report\\AutoSave.apr",
+		"BuildVersion":"1.04.17(20190105)",
+		"BuildTime":"20190325:2024",
+		"TimeWhenLoad":"2019/03/25 20:24:57",
+		"CurrentTime":"2019/03/25 20:25:21",
+		"BuildOn":"AP1800",
+		"ChipName":"CY8C21123-24SXI",
+		"Package":"SO8(150mil)",
+		"Adapter":"SO8(150)-S08",
+		"CheckSum":"0xABCD5678",
+		"CheckSumType":"Byte",
+		"Description":"StdMES Auto Create",
+		"Author":"JONY-DESKTOP",
+		"FuncMode":"Program",
+		"ExecPC":"Jony-Desktop",
+		"CommandSequence":"Blank Check --> Erase if blank check failed --> Program --> Checksum Compare --> Verify --> Secure"
+	},
+	"FileImport":
+	{
+		"Version":"1.0",
+		"ClearBufferWithData":"0x00",
+		"OrgFiles":[{
+			"FileName":"D:\\客户问题与调试\\Report\\Test.bin",
+			"Parser":"Auto",
+			"AutoDetectEn":"TRUE",
+			"WordAddrEn":"FALSE",
+			"RelocationEn":"FALSE",
+			"BufferAddr":"0x0",
+			"FileAddr":"0x0",
+			"LoadLength":"0x0",
+			"SwapType":"No Swap"
+		}
+		]
+	},
+	"OverallStatistics":
+	{
+		"Pass":999,"Fail":1,"Total":1000,"YieldRate":"100.000%",
+		"SiteStatistics":[
+			{
+				"SiteSN":"A80U15031900001",
+				"SiteAlias":"Site01",
+				"Pass":1,"Fail":0,"Total":1,"YieldRate":"100.000%",
+				"BottomBoard":"0000000000000000",
+				"SKTStatistics":[
+					{"SKTIdx":1,"Pass":1,"Fail":0,
+					 "AdpInfo":[
+					 {"AdpSN":"EB00000041B0A848","Pass":1,"Fail":0}
+					 ]
+					}
+				],
+				"FailStatus":[
+					{"SKTIdx":1,"ADPSN":"EB00000041B0A848","ErrNo":"0x2010","Counter":1,"ErrMsg":"Adp Access Error"}
+				]
+			}
+		]
+	},
+	"SKTCounter":
+	[
+		{"SiteSN":"A80U15031900001","SiteAlias":"Site01","BottomBoard":"0000000000000000",
+		 "AdpCounter":[
+		 {"SKTIdx":1,"AdpSN":"EB00000041B0A848","Current":164,"Limited":61000,"FailCnt":30}
+		 ]
+		}
+	]
+}

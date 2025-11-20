@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6EB99386-000C-49C4-A810-CAF019580754}</ProjectGuid>
+    <RootNamespace>Com</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <Keyword>MFCProj</Keyword>
+    <ProjectName>ACComMes</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>../Build</OutDir>
+    <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../Build</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.;json/include;MD5;Cache;Views;Scan;FileCheck;Log;Module;Network;ProgCtrl;Utils;Common;Program</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>../Build/$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalDependencies>legacy_stdio_definitions.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.;json/include;MD5;Cache;Views;Scan;FileCheck;Log;Module;Network;ProgCtrl;Utils;Common;Program</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>../Build/$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PreBuildEvent>
+      <Command>subwcrev.exe ..\ .\SvnRevisionTemplate.h .\VersionSvn.h</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Program\NormalProgram.h" />
+    <ClInclude Include="Utils\ACException.h" />
+    <ClInclude Include="ProgCtrl\ACMesAccess.h" />
+    <ClInclude Include="AES\AES.h" />
+    <ClInclude Include="AES\ChkSum.h" />
+    <ClInclude Include="Module\BaseModuleProgram.h" />
+    <ClInclude Include="Network\BlockTcpSocket.h" />
+    <ClInclude Include="Utils\ComFunc.h" />
+    <ClInclude Include="Utils\ComOpt.h" />
+    <ClInclude Include="Utils\Delegate.h" />
+    <ClInclude Include="Common\AutoTaskData.h" />
+    <ClInclude Include="Utils\cJSON.h" />
+    <ClInclude Include="Utils\ComTool.h" />
+    <ClInclude Include="Views\DlgAdminMode.h" />
+    <ClInclude Include="Views\DlgAuthority.h" />
+    <ClInclude Include="Views\DlgAutoDataRecord.h" />
+    <ClInclude Include="Views\DlgAutoPosSetting.h" />
+    <ClInclude Include="Views\DlgCodeScan.h" />
+    <ClInclude Include="Views\DlgLogin.h" />
+    <ClInclude Include="Views\DlgMESTest.h" />
+    <ClInclude Include="Views\DlgModuleSetting.h" />
+    <ClInclude Include="Views\DlgProduceInfo.h" />
+    <ClInclude Include="Views\DlgProjectSel.h" />
+    <ClInclude Include="Views\DlgSetting.h" />
+    <ClInclude Include="Views\DlgUserManager.h" />
+    <ClInclude Include="Views\DlgUserUpdate.h" />
+    <ClInclude Include="Utils\ExcelDB.h" />
+    <ClInclude Include="ProgCtrl\ExternBurnApi.h" />
+    <ClInclude Include="Cache\FileCacheManager.h" />
+    <ClInclude Include="Json\src\json_batchallocator.h" />
+    <ClInclude Include="Mes.h" />
+    <ClInclude Include="MesDlg.h" />
+    <ClInclude Include="Scan\HandleScan.h" />
+    <ClInclude Include="Network\HttpClient.h" />
+    <ClInclude Include="Log\ILog.h" />
+    <ClInclude Include="ProgCtrl\IMesAccess.h" />
+    <ClInclude Include="FileCheck\IProgFileCheck.h" />
+    <ClInclude Include="Common\IStatus.h" />
+    <ClInclude Include="Log\LogEdit.h" />
+    <ClInclude Include="Common\MainData.h" />
+    <ClInclude Include="MD5\MD5.hpp" />
+    <ClInclude Include="ProgCtrl\MesInterface.h" />
+    <ClInclude Include="Log\MesSyslog.h" />
+    <ClInclude Include="MesTcp\tinyxml2.h" />
+    <ClInclude Include="Module\ModuleProgram.h" />
+    <ClInclude Include="Common\OperatorData.h" />
+    <ClInclude Include="FileCheck\ProgFileCheckByte.h" />
+    <ClInclude Include="FileCheck\ProgFileCheckMD5.h" />
+    <ClInclude Include="Common\ProgRecord.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Utils\serial.h" />
+    <ClInclude Include="Utils\Setting.h" />
+    <ClInclude Include="Network\soapH.h" />
+    <ClInclude Include="Network\soapStub.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="ProgCtrl\StdMesApi.h" />
+    <ClInclude Include="Network\stdsoap2.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Log\TcpSyslog.h" />
+    <ClInclude Include="Network\ThirdPartyMesAccess.h" />
+    <ClInclude Include="Utils\UserManager.h" />
+    <ClInclude Include="Version.h" />
+    <ClInclude Include="Utils\WorkThread.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AES\AES.cpp" />
+    <ClCompile Include="AES\crc32.cpp" />
+    <ClCompile Include="Module\BaseModuleProgram.cpp" />
+    <ClCompile Include="Network\BlockTcpSocket.cpp" />
+    <ClCompile Include="Program\NormalProgram.cpp" />
+    <ClCompile Include="Views\DlgAuthority.cpp" />
+    <ClCompile Include="Views\DlgCodeScan.cpp" />
+    <ClCompile Include="Views\DlgModuleSetting.cpp" />
+    <ClCompile Include="Views\DlgProjectSel.cpp" />
+    <ClCompile Include="Views\DlgUserManager.cpp" />
+    <ClCompile Include="Views\DlgUserUpdate.cpp" />
+    <ClCompile Include="ProgCtrl\ExternBurnApi.cpp" />
+    <ClCompile Include="Cache\FileCacheManager.cpp" />
+    <ClCompile Include="Json\src\json_reader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Json\src\json_value.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Json\src\json_writer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ProgCtrl\ACMesAccess.cpp" />
+    <ClCompile Include="Utils\ComFunc.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Utils\ComOpt.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Utils\Delegate.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Common\AutoTaskData.cpp" />
+    <ClCompile Include="Utils\cJSON.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Utils\ComTool.cpp" />
+    <ClCompile Include="Views\DlgAdminMode.cpp" />
+    <ClCompile Include="Views\DlgAutoDataRecord.cpp" />
+    <ClCompile Include="Views\DlgAutoPosSetting.cpp" />
+    <ClCompile Include="Views\DlgLogin.cpp" />
+    <ClCompile Include="Views\DlgMESTest.cpp" />
+    <ClCompile Include="Views\DlgProduceInfo.cpp" />
+    <ClCompile Include="Views\DlgSetting.cpp" />
+    <ClCompile Include="Utils\ExcelDB.cpp" />
+    <ClCompile Include="Mes.cpp" />
+    <ClCompile Include="MesDlg.cpp" />
+    <ClCompile Include="Scan\HandleScan.cpp" />
+    <ClCompile Include="Network\HttpClient.cpp" />
+    <ClCompile Include="ProgCtrl\IMesAccess.cpp" />
+    <ClCompile Include="FileCheck\IProgFileCheck.cpp" />
+    <ClCompile Include="Common\IStatus.cpp" />
+    <ClCompile Include="Log\LogEdit.cpp" />
+    <ClCompile Include="Common\MainData.cpp" />
+    <ClCompile Include="MD5\MD5.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ProgCtrl\MesInterface.cpp" />
+    <ClCompile Include="Log\MesSyslog.cpp" />
+    <ClCompile Include="MesTcp\tinyxml2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Module\ModuleProgram.cpp" />
+    <ClCompile Include="Common\OperatorData.cpp" />
+    <ClCompile Include="FileCheck\ProgFileCheckByte.cpp" />
+    <ClCompile Include="FileCheck\ProgFileCheckMD5.cpp" />
+    <ClCompile Include="Common\ProgRecord.cpp" />
+    <ClCompile Include="Utils\Serial.cpp" />
+    <ClCompile Include="Utils\Setting.cpp" />
+    <ClCompile Include="Network\soapC.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Network\soapClient.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ProgCtrl\StdMesApi.cpp" />
+    <ClCompile Include="Network\stdsoap2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Log\TcpSyslog.cpp" />
+    <ClCompile Include="Network\ThirdPartyMesAccess.cpp" />
+    <ClCompile Include="Utils\UserManager.cpp" />
+    <ClCompile Include="Utils\WorkThread.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Mes.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Json\src\json_internalarray.inl" />
+    <None Include="Json\src\json_internalmap.inl" />
+    <None Include="Json\src\json_valueiterator.inl" />
+    <None Include="Network\OnlineWebServiceSoap.nsmap" />
+    <None Include="res\Mes.rc2" />
+    <None Include="Network\SmtFtpServiceSoapBinding.nsmap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\LOGO.ico" />
+    <Image Include="res\Mes.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Mes.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

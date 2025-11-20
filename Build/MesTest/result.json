@@ -1,0 +1,18 @@
+{
+	"CurFail":	0,
+	"CurPass":	1,
+	"CurTotal":	1,
+	"SiteAlias":	"Aprog11",
+	"SiteSN":	"A80U20093003837",
+	"Fail":	0,
+	"Pass":	1,
+	"Total":	1,
+	"FailReason":	[],
+	"useCode":	"1002714",
+	"verType":	"",
+	"StationId":	"1001",
+	"funcmode":	"Program",
+	"versionNumber":	"",
+	"OrderName":	"001030012634",
+	"ProductName":	"7459S26I436H0016"
+}

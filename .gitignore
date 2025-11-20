@@ -1,0 +1,130 @@
+# Visual Studio 用户特定文件
+.vs/
+*.vcxproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+docs/
+
+# Visual Studio 临时文件
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*.sdf
+*.opensdf
+*.db
+*.opendb
+
+# Visual Studio IntelliSense
+ipch/
+*.ipch
+
+# 编译输出目录
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio 缓存/临时文件
+*.cache
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# 编译生成的文件
+*.exe
+*.dll
+*.exp
+*.lib
+*.so
+*.dylib
+
+# 预编译头文件
+*.gch
+*.pch
+
+# 链接器生成的文件
+*.ilk
+*.map
+*.exp
+
+# 调试文件
+*.pdb
+*.idb
+*.ipdb
+
+# 备份文件
+*.bak
+*.backup
+*.swp
+*~
+
+# 操作系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# 项目特定的构建输出（根据实际情况调整）
+# 如果 Build/ 目录中有需要版本控制的配置文件，请取消下面的注释并单独处理
+# Build/
+# 或者只忽略 Build 目录中的特定文件类型
+Build/*.exe
+Build/*.dll
+Build/*.pdb
+Build/*.exp
+Build/*.ilk
+Build/*.lib
+Build/*.obj
+Build/*.log
+Build/Cache/
+Build/Log/
+
+# 测试输出
+Test/*.exe
+Test/*.json.bak
+
+# 工具发布版本目录
+ToolReleaseVersions/
+
+# 其他临时文件
+*.tmp
+*.temp
+*.old
+

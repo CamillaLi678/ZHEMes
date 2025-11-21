@@ -381,7 +381,7 @@ MesInfo CMesInterface::GetMesRecord(CString workOrder, CString materialID, CStri
 	
 	try {
 		// 使用新的MES接口URL
-		strURL.Format("http://192.168.120.101:8080/zgyb/ihtml?msclass=SAPP&servclass=api.SYBACGETMO&weblis=api.Request");
+		strURL.Format("%s/zgyb/ihtml?msclass=SAPP&servclass=api.SYBACGETMO&weblis=api.Request", m_strBaseUrl);
 
 		// 构建新的请求体
 		RootBuild = cJSON_CreateObject();
@@ -399,7 +399,7 @@ MesInfo CMesInterface::GetMesRecord(CString workOrder, CString materialID, CStri
 
 		strResponse.Empty();
 		// 使用API密钥作为请求头
-		strHeader.Format("Content-Type:application/json;charset:UTF-8\r\nAuthorization:%s\r\n", strApiKey);
+		strHeader.Format("Content-Type:application/json;charset=UTF-8\r\nAuthorization:%s\r\n", strApiKey);
 
 		m_pILog->PrintLog(LOGLEVEL_LOG, "GetMesRecord请求参数: mo_no=%s, box_sn=%s, rs_no=%s, wk_no=%s", 
 			workOrder, m_strBoxSN, m_strRsNo, m_strWkNo);
@@ -1105,11 +1105,11 @@ INT CMesInterface::CommitProgramerInfo2Mes(CString strJson)
 		strBody = MByteStrToUtf8CStr(strBody);
 
 		// 使用新的MES接口URL
-		strURL.Format("http://192.168.120.101:8080/zgyb/ihtml?msclass=SAPP&servclass=api.SYBACSLOT&weblis=api.Request");
+		strURL.Format("%s/zgyb/ihtml?msclass=SAPP&servclass=api.SYBACSLOT&weblis=api.Request", m_strBaseUrl);
 
 		strResponse.Empty();
 		// 添加API密钥到请求头
-		strHeader.Format("Content-Type:application/json;charset:UTF-8\r\nAuthorization:%s\r\n", strApiKey);
+		strHeader.Format("Content-Type:application/json;charset=UTF-8\r\nAuthorization:%s\r\n", strApiKey);
 
 		m_pILog->PrintLog(LOGLEVEL_LOG, "上传座子信息到MES，URL=%s", strURL);
 		m_pILog->PrintLog(LOGLEVEL_LOG, "请求参数: %s", strBody);
@@ -1471,7 +1471,7 @@ INT CMesInterface::CommitProgramRet2ACMes(CString strLastJson)
 
 		strResponse.Empty();
 		// 在请求头中添加API密钥
-		strHeader.Format("Content-Type:application/json;charset:UTF-8\r\nAPISLAK: %s\r\n", strApiKey);
+		strHeader.Format("Content-Type:application/json;charset=UTF-8\r\nAPISLAK: %s\r\n", strApiKey);
 
 		nHttpRet = Client.HttpPost(strURL, strHeader, strBody, strResponse);
 		m_pILog->PrintLog(LOGLEVEL_LOG, "UploadProgramRet2ACMes strURL=%s,strHeader=%s, strBody=%s, strResponse=%s, HttpPost Ret=%d",

@@ -1269,6 +1269,29 @@ INT CMesInterface::CommitProgramRet2Mes(CString strLastJson)
 	//	return -1;
 	//}
 
+	// 读取API密钥
+	CString strApiKey = _T("");
+	CString strApiKeyPath;
+	strApiKeyPath.Format("%s\\APISLAK.txt", GetCurrentPath());
+	CFile apiKeyFile;
+	if (apiKeyFile.Open(strApiKeyPath, CFile::modeRead | CFile::shareDenyNone)) {
+		UINT fileLen = (UINT)apiKeyFile.GetLength();
+		if (fileLen > 0) {
+			char* pBuffer = new char[fileLen + 1];
+			memset(pBuffer, 0, fileLen + 1);
+			apiKeyFile.Read(pBuffer, fileLen);
+			strApiKey.Format("%s", pBuffer);
+			strApiKey.Trim();
+			delete[] pBuffer;
+		}
+		apiKeyFile.Close();
+		m_pILog->PrintLog(LOGLEVEL_LOG, "成功读取API密钥文件: %s", strApiKeyPath);
+	}
+	else {
+		m_pILog->PrintLog(LOGLEVEL_ERR, "无法读取API密钥文件: %s", strApiKeyPath);
+		return -1;
+	}
+
 	INT Ret = -1;
 	int nHttpRet = 0;
 	CHttpClient Client;
@@ -1278,7 +1301,10 @@ INT CMesInterface::CommitProgramRet2Mes(CString strLastJson)
 
 	cJSON* pRootParser = NULL;
 	cJSON* pResult = NULL;
+	cJSON* pStatus = NULL;
 	cJSON* RootBuild = NULL;
+	cJSON* SiteQtyArray = NULL;
+	cJSON* SiteObj = NULL;
 
 	CString strHeader;
 	CString strBody;
@@ -1295,22 +1321,127 @@ INT CMesInterface::CommitProgramRet2Mes(CString strLastJson)
 			goto __end;
 		}
 
-		strURL.Format("%s", m_strSendProgResultUrl);
+		// 使用新的MES接口URL（图片中的格式）
+		strURL.Format("%s/zgyb/ihtml?msclass=SAPP&servclass=api.SYBACQTY&weblis=api.Request", m_strBaseUrl);
 
-		if (cJSON_GetObjectItem(RootBuild, "FailReason") == NULL) {
-			cJSON_AddArrayToObject(RootBuild, "FailReason");
+		// 创建SiteQty数组
+		SiteQtyArray = cJSON_CreateArray();
+		SiteObj = cJSON_CreateObject();
+		
+		// 从原始JSON中提取数据
+		cJSON* pSiteSN = cJSON_GetObjectItem(RootBuild, "SiteSN");
+		cJSON* pSiteAlias = cJSON_GetObjectItem(RootBuild, "SiteAlias");
+		cJSON* pTotal = cJSON_GetObjectItem(RootBuild, "Total");
+		cJSON* pPass = cJSON_GetObjectItem(RootBuild, "Pass");
+		cJSON* pFail = cJSON_GetObjectItem(RootBuild, "Fail");
+		cJSON* pFailReason = cJSON_GetObjectItem(RootBuild, "FailReason");
+		cJSON* pFuncmode = cJSON_GetObjectItem(RootBuild, "funcmode");
+		
+		// 按图片顺序添加字段到SiteObj
+		// 1. OrderName - 工单号
+		cJSON_AddStringToObject(SiteObj, "OrderName", (LPSTR)(LPCSTR)m_mesInfo.workOrder);
+		
+		// 2. MaterialID - 物料号
+		cJSON_AddStringToObject(SiteObj, "MaterialID", (LPSTR)(LPCSTR)m_mesInfo.materialID);
+		
+		// 3. Funcmode - 执行功能（从原JSON获取或使用默认值）
+		if (pFuncmode != NULL && cJSON_IsString(pFuncmode)) {
+			cJSON_AddStringToObject(SiteObj, "Funcmode", pFuncmode->valuestring);
+		} else {
+			cJSON_AddStringToObject(SiteObj, "Funcmode", m_mesInfo.curExec);
+		}
+		
+		// 4. SiteSN - 烧录器序列号
+		if (pSiteSN != NULL && cJSON_IsString(pSiteSN)) {
+			cJSON_AddStringToObject(SiteObj, "SiteSN", pSiteSN->valuestring);
+		} else {
+			cJSON_AddStringToObject(SiteObj, "SiteSN", "");
+		}
+		
+		// 5. SiteAlias - 烧录器名称
+		if (pSiteAlias != NULL && cJSON_IsString(pSiteAlias)) {
+			cJSON_AddStringToObject(SiteObj, "SiteAlias", pSiteAlias->valuestring);
+		} else {
+			cJSON_AddStringToObject(SiteObj, "SiteAlias", "");
+		}
+		
+		// 6. Total - 烧录数量
+		if (pTotal != NULL && cJSON_IsNumber(pTotal)) {
+			cJSON_AddNumberToObject(SiteObj, "Total", pTotal->valueint);
+		} else {
+			cJSON_AddNumberToObject(SiteObj, "Total", 0);
+		}
+		
+		// 7. Fail - 失败数量
+		if (pFail != NULL && cJSON_IsNumber(pFail)) {
+			cJSON_AddNumberToObject(SiteObj, "Fail", pFail->valueint);
+		} else {
+			cJSON_AddNumberToObject(SiteObj, "Fail", 0);
+		}
+		
+		// 8. Pass - 合格数量
+		if (pPass != NULL && cJSON_IsNumber(pPass)) {
+			cJSON_AddNumberToObject(SiteObj, "Pass", pPass->valueint);
+		} else {
+			cJSON_AddNumberToObject(SiteObj, "Pass", 0);
+		}
+		
+		// 9. StationId - 烧录器编号
+		if (!m_strStationId.IsEmpty()) {
+			int stationId = atoi(m_strStationId);
+			if (stationId > 0) {
+				cJSON_AddNumberToObject(SiteObj, "StationId", stationId);
+			} else {
+		cJSON_AddNumberToObject(SiteObj, "StationId", 10010);
+			}
+		} else {
+			cJSON_AddNumberToObject(SiteObj, "StationId", 10010);
+		}
+		
+		// 10. ProjectName - 工程文件名
+		cJSON_AddStringToObject(SiteObj, "ProjectName", m_mesInfo.projPath);
+		
+		// 11. ProjectChecksum - 工程文件校验值
+		cJSON_AddStringToObject(SiteObj, "ProjectChecksum", m_mesInfo.projChecksum);
+		
+		// 12. TaskName - 自动化任务文件名
+		cJSON_AddStringToObject(SiteObj, "TaskName", m_mesInfo.autoTaskFilePath);
+		
+		// 13. SoftVersion - 版本号
+		if (!m_mesInfo.projVersion.IsEmpty()) {
+			cJSON_AddStringToObject(SiteObj, "SoftVersion", m_mesInfo.projVersion);
+		} else {
+			cJSON_AddStringToObject(SiteObj, "SoftVersion", "1.0.0");
+		}
+		
+		// 14. 额外参数
+		if (!m_strBoxSN.IsEmpty()) {
+			cJSON_AddStringToObject(SiteObj, "box_sn", (LPSTR)(LPCSTR)m_strBoxSN);
+		}
+		if (!m_strBatNo.IsEmpty()) {
+			cJSON_AddStringToObject(SiteObj, "bat_no", (LPSTR)(LPCSTR)m_strBatNo);
+		}
+		if (!m_strRsNo.IsEmpty()) {
+			cJSON_AddStringToObject(SiteObj, "rs_no", (LPSTR)(LPCSTR)m_strRsNo);
+		}
+		if (!m_strWkNo.IsEmpty()) {
+			cJSON_AddStringToObject(SiteObj, "wk_no", (LPSTR)(LPCSTR)m_strWkNo);
+		}
+		
+		// 15. FailReason - 失败原因数组
+		if (pFailReason != NULL && cJSON_IsArray(pFailReason)) {
+			cJSON_AddItemToObject(SiteObj, "FailReason", cJSON_Duplicate(pFailReason, 1));
+		} else {
+			cJSON_AddArrayToObject(SiteObj, "FailReason");
 		}
 
-		cJSON_AddStringToObject(RootBuild, "TaskName", m_mesInfo.autoTaskFilePath);
-		cJSON_AddStringToObject(RootBuild, "ProjectChecksum", m_mesInfo.projChecksum);
-		//cJSON_AddStringToObject(RootBuild, "StationId", (LPSTR)(LPCSTR)m_strStationId);
-		cJSON_AddNumberToObject(RootBuild, "StationId", 1001);
-		cJSON_AddStringToObject(RootBuild, "Funcmode", m_mesInfo.curExec);
-		cJSON_AddStringToObject(RootBuild, "ProjectName", m_mesInfo.projPath);
-		cJSON_AddStringToObject(RootBuild, "OrderName", (LPSTR)(LPCSTR)/*m_ProgRecord.DestRecord.*/m_mesInfo.workOrder);
-		cJSON_AddStringToObject(RootBuild, "MaterialID", (LPSTR)(LPCSTR)/*m_ProgRecord.DestRecord.*/m_mesInfo.materialID);
-		cJSON_AddStringToObject(RootBuild, "SoftVersion", "V_SoftWare_1.0.1");
-
+		// 将SiteObj添加到数组
+		cJSON_AddItemToArray(SiteQtyArray, SiteObj);
+		
+		// 删除旧的RootBuild，创建新的
+		cJSON_Delete(RootBuild);
+		RootBuild = cJSON_CreateObject();
+		cJSON_AddItemToObject(RootBuild, "SiteQty", SiteQtyArray);
 
 		strBuildJson = cJSON_Print(RootBuild);
 		strBody.Format("%s", strBuildJson);
@@ -1319,16 +1450,14 @@ INT CMesInterface::CommitProgramRet2Mes(CString strLastJson)
 		strBody = MByteStrToUtf8CStr(strBody);
 
 		strResponse.Empty();
-		strHeader.Format("Content-Type:application/json;charset:UTF-8\r\n");
+		// 添加API密钥到请求头（使用Authorization）
+		strHeader.Format("Content-Type:application/json;charset=UTF-8\r\nAuthorization:%s\r\n", strApiKey);
 
 		nHttpRet = Client.HttpPost(strURL, strHeader, strBody, strResponse);
 		m_pILog->PrintLog(LOGLEVEL_LOG, "UploadProgramRet2Mes strURL=%s,strHeader=%s, strBody=%s, strResponse=%s, HttpPost Ret=%d",
 			strURL, strHeader, strBody, strResponse, nHttpRet);
 		if (nHttpRet != 0) {
-			if (nHttpRet == 1) {
-			}
-			else if (nHttpRet == 2) {
-			}
+			m_pILog->PrintLog(LOGLEVEL_ERR, "HTTP请求失败, 错误码=%d", nHttpRet);
 			goto __end;
 		}
 
@@ -1338,21 +1467,43 @@ INT CMesInterface::CommitProgramRet2Mes(CString strLastJson)
 			goto __end;
 		}
 
-		pResult = cJSON_GetObjectItem(pRootParser, "Result");
-		if (pResult == NULL) {
-			m_pILog->PrintLog(LOGLEVEL_ERR, "解析Mes返回的Result字段错误，请确认Mes维护的字段信息, ");
-			goto __end;
-		}
-
-		if (!cJSON_IsNumber(pResult) || pResult->valueint != 1) {
-			if (cJSON_GetObjectItem(pRootParser, "errMsg") != NULL) {
-				strErrMsg.Format("%s", cJSON_GetObjectItem(pRootParser, "errMsg")->valuestring);
+		// 检查Status字段（根据图片中的响应格式）
+		pStatus = cJSON_GetObjectItem(pRootParser, "Status");
+		if (pStatus != NULL) {
+			// 如果返回Status字段，使用Status判断
+			if (!cJSON_IsBool(pStatus) || !cJSON_IsTrue(pStatus)) {
+				cJSON* pItemObj = cJSON_GetObjectItem(pRootParser, "Message");
+				if (pItemObj != NULL && cJSON_IsString(pItemObj)) {
+					strErrMsg.Format("%s", pItemObj->valuestring);
+				}
+				else {
+					strErrMsg = "未知错误";
+				}
 				m_pILog->PrintLog(LOGLEVEL_ERR, "Mes返回上传烧录结果失败，错误原因为:%s ", strErrMsg);
-			}
-			if (cJSON_GetObjectItem(pRootParser, "errCode") != NULL) {
-				strErrCode.Format("%s", cJSON_GetObjectItem(pRootParser, "errCode")->valuestring);
+				goto __end;
 			}
 		}
+		else {
+			// 兼容原有的Result字段判断
+			pResult = cJSON_GetObjectItem(pRootParser, "Result");
+			if (pResult == NULL) {
+				m_pILog->PrintLog(LOGLEVEL_ERR, "解析Mes返回的Result字段错误，请确认Mes维护的字段信息, ");
+				goto __end;
+			}
+
+			if (!cJSON_IsNumber(pResult) || pResult->valueint != 1) {
+				if (cJSON_GetObjectItem(pRootParser, "errMsg") != NULL) {
+					strErrMsg.Format("%s", cJSON_GetObjectItem(pRootParser, "errMsg")->valuestring);
+					m_pILog->PrintLog(LOGLEVEL_ERR, "Mes返回上传烧录结果失败，错误原因为:%s ", strErrMsg);
+				}
+				if (cJSON_GetObjectItem(pRootParser, "errCode") != NULL) {
+					strErrCode.Format("%s", cJSON_GetObjectItem(pRootParser, "errCode")->valuestring);
+				}
+				goto __end;
+			}
+		}
+		
+		m_pILog->PrintLog(LOGLEVEL_LOG, "上传烧录结果成功");
 	}
 	catch (...) {
 		m_pILog->PrintLog(LOGLEVEL_ERR, "CommitProgramRet2Mes HttpPost Fail strURL: %s", strURL);

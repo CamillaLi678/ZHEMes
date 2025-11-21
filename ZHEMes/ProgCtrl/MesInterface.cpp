@@ -392,6 +392,8 @@ MesInfo CMesInterface::GetMesRecord(CString workOrder, CString materialID, CStri
 
 		strBuildJson = cJSON_PrintUnformatted(RootBuild);
 		strBody.Format("%s", strBuildJson);
+
+		m_pILog->PrintLog(LOGLEVEL_LOG, "strBody = %s", strBody);
 		//Change to UTF8
 		strBody = MByteStrToUtf8CStr(strBody);
 
@@ -1014,8 +1016,13 @@ INT CMesInterface::CommitProgramerInfo2Mes(CString strJson)
 		return -1;
 	}
 
-	if (m_mesInfo.workOrder.IsEmpty() || m_mesInfo.materialID.IsEmpty()) {
+	/*if (m_mesInfo.workOrder.IsEmpty() || m_mesInfo.materialID.IsEmpty()) {
 		m_pILog->PrintLog(LOGLEVEL_ERR, "CMesInterface WorkOrder/materialID IsEmpty");
+		return -1;
+	}*/
+
+	if (m_mesInfo.workOrder.IsEmpty()) {
+		m_pILog->PrintLog(LOGLEVEL_ERR, "CMesInterface WorkOrder IsEmpty");
 		return -1;
 	}
 
